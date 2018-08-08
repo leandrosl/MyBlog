@@ -1,8 +1,25 @@
+<?php
+    if ($_SERVER['REQUEST_METHOD'] == 'POST') {
+        try {
+            $dbConn = new PDO('mysql:host=mysql;port=3306;dbname=myblog-bd', 'root', 'root');
+            foreach ($dbConn->query('SELECT * FROM post') as $row) {
+                print_r($row);
+            }
+        } catch (PDOException $pdoException) {
+            print_r("Não foi possível conectar ao banco: {$pdoException->getMessage()}");
+        } finally {
+            $dbConn = null;
+            die();
+        }
+    }
+?>
+
+
 <?php include_once('./parts/header.php'); ?>
 
 <h3>Novo Post</h3>
 
-<form action="">
+<form method="POST">
     <label for="title">Título</label>
     <input type="text" id="title" name="title">
     <br>
