@@ -13,6 +13,8 @@ services:
     restart: always
     depends_on:
       - mysql
+    links:
+      - mysql
   mysql:
     container_name: myblog-mysql
     image: mysql:5.7.23
