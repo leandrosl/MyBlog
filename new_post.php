@@ -1,17 +1,17 @@
 <?php
-    if ($_SERVER['REQUEST_METHOD'] == 'POST') {
-        try {
-            $dbConn = new PDO('mysql:host=mysql;port=3306;dbname=myblog-bd', 'root', 'root');
-            foreach ($dbConn->query('SELECT * FROM post') as $row) {
-                print_r($row);
-            }
-        } catch (PDOException $pdoException) {
-            print_r("Não foi possível conectar ao banco: {$pdoException->getMessage()}");
-        } finally {
-            $dbConn = null;
-            die();
-        }
+require_once('./DatabaseConnection.php');
+
+if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+    try {
+        $conn = new DatabaseConnection();
+        $db = $conn->openConnection();
+        // Fazer inserção no DB
+    } catch (PDOException $pdoException) {
+        print_r("Não foi possível conectar ao banco: {$pdoException->getMessage()}");
+    } finally {
+        $conn->closeConnection();
     }
+}
 ?>
 
 
