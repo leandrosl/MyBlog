@@ -1,5 +1,7 @@
 <?php
 
+namespace MyBlog\Core;
+
 class DatabaseConnection
 {
     private $dbType = 'mysql';
