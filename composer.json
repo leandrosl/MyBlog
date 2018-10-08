@@ -1,3 +1,11 @@
 {
-    "require": {}
+    "name": "MyBlog",
+    "description": "A PHP CMS for create blogs",
+    "require": {},
+    "autoload": {
+        "psr-4": {
+            "MyBlog\\App\\": "src/",
+            "MyBlog\\Core\\": "core/"
+        }
+    }
 }
