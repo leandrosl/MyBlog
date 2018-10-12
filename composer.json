@@ -2,10 +2,16 @@
     "name": "MyBlog",
     "description": "A PHP CMS for create blogs",
     "require": {},
+    "require-dev": {
+        "phpunit/phpunit": "^7"
+    },
     "autoload": {
         "psr-4": {
             "MyBlog\\App\\": "src/",
             "MyBlog\\Core\\": "core/"
         }
+    },
+    "scripts": {
+        "phpunit": "vendor/bin/phpunit"
     }
 }
