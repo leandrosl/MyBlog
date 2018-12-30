@@ -1,10 +1,18 @@
 <?php 
+    include __DIR__ . '/../db/DatabaseConnection.php';
+    include __DIR__ . '/../db/DatabaseFunctions.php';
+
+    try {
+        $posts = getAll($pdo, 'post');
+    } catch (PDOException $e) {
+        print("Erro no banco:" . $e->getMessage());
+    }    
 
     ob_start();
 
     include __DIR__ . '/../views/index.template.php';
 
-    $outout = ob_get_clean();
+    $output = ob_get_clean();
 
     include __DIR__ . '/../views/layout.template.php';
 ?>
