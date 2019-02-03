@@ -7,7 +7,7 @@
         <?php foreach ($posts as $post): ?>
             <div class="card">
                 <div class="card-body">
-                    <a href="#!">
+                    <a href="post.php?id=<?= $post['id'] ?>">
                         <h4><?= $post['title'] ?></h4>
                     </a>
                     <p><?= $post['post_text']?></p>
