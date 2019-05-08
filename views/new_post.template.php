@@ -3,7 +3,7 @@
     <div class="card">
         <div class="card-body">
             <h3>Novo Post</h3>
-            <form action="POST">
+            <form method="POST">
                 <div class="form-group">
                     <label for="title">Título</label>
                     <input type="text" name="title" class="form-control" placeholder="Digite o título do post">
