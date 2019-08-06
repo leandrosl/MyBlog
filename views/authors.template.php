@@ -7,7 +7,7 @@
                 <div class="card">
                     <div class="card-body">
                         <a href="#!">
-                            <h4><?= $author['name'] .' '. $author['lastname'] ?></h4>
+                            <h4><?= $author['first_name'] .' '. $author['last_name'] ?></h4>
                         </a>
                     </div>
                 </div>
