@@ -16,3 +16,28 @@ function getById($pdo, $table, $id)
 
     return $statement->fetch();
 }
+
+function insert($pdo, $table, $fields) 
+{
+    $query = "INSERT INTO $table (";
+
+    foreach ($fields as $key => $value) {
+        $query .= "{$key}, ";
+    }
+
+    $query .= ") VALUES (";
+
+    $query = str_replace(', )', ')', $query);
+
+    foreach ($fields as $key => $value) {
+        $query .= ":{$key}, ";
+    }
+
+    $query .= ");";
+
+    $query = str_replace(', );', ');', $query);
+
+    $statement = $pdo->prepare($query);
+
+    return $statement->execute($fields);
+}
