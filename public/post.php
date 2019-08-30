@@ -5,7 +5,7 @@ include __DIR__ . '/../db/DatabaseFunctions.php';
 
 if (isset($_GET['id'])) {
     try {
-        $post = getById($pdo, 'post', $_GET['id']);
+        $post = getById($pdo, 'posts', $_GET['id']);
     } catch (PDOException $e) {
         print("Erro no banco: " . $e->getMessage());
     }

@@ -3,7 +3,7 @@
     include __DIR__ . '/../db/DatabaseFunctions.php';
 
     try {
-        $posts = getAll($pdo, 'post');
+        $posts = getAll($pdo, 'posts');
     } catch (PDOException $e) {
         print("Erro no banco:" . $e->getMessage());
     }    

@@ -12,7 +12,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             'post_text' => $_POST['post-text'],
         ];
 
-        $isInsert = insert($pdo, 'post', $fields);
+        $isInsert = insert($pdo, 'posts', $fields);
 
         if ($isInsert) {
             header("Location: /");
