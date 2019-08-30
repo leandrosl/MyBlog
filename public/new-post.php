@@ -6,12 +6,20 @@ include __DIR__ . '/../db/DatabaseFunctions.php';
 
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     try {
+        $fields = [
+            'author_id' => '1',
+            'title' => $_POST['title'],
+            'post_text' => $_POST['post-text'],
+        ];
 
+        $isInsert = insert($pdo, 'post', $fields);
+
+        if ($isInsert) {
+            header("Location: /");
+        }
     } catch (PDOException $e) {
-
+        echo $e->getMessage();
     }
-    
-    header("Location: index.php");
 } else {
     ob_start();
 
