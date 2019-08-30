@@ -13,7 +13,7 @@ services:
       - 80:80
       - 8080:8080
       - 443:443
-    restart: always
+    #restart: always
     depends_on:
       - mysql
     links:
@@ -28,7 +28,7 @@ services:
     environment:
       MYSQL_ROOT_PASSWORD: root
       MYSQL_DATABASE: myblog_db
-    restart: always
+    #restart: always
 
 volumes:
   myblog_db_data:
