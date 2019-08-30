@@ -1,7 +1,7 @@
 -- MyBlog database script --
 
 -- tables --
-CREATE TABLE post (
+CREATE TABLE posts (
     id INT NOT NULL AUTO_INCREMENT PRIMARY KEY,
     author_id INT,
     title VARCHAR(200),
