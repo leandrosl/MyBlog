@@ -7,4 +7,5 @@
     <p>Você ainda não escreveu nenhum post</p>
     <a class="btn btn-primary btn-lg" href="#" role="button">Escrever um Post</a>
     </div>
+    <?php var_dump($user); ?>
 </div>
