@@ -17,6 +17,22 @@ function getById($pdo, $table, $id)
     return $statement->fetch();
 }
 
+function getAllWhere($pdo, $table, $whereFields)
+{
+    $query = "SELECT * FROM {$table} WHERE ";
+
+    foreach ($whereFields as $key => $value) {
+        $query .= "{$key} = {$value} AND ";
+    }
+
+    $query = str_replace(' AND ', ';', $query);
+
+    $statement = $pdo->prepare($query);
+    $statement->execute();
+
+    return $statement->fetch();
+}
+
 function insert($pdo, $table, $fields) 
 {
     $query = "INSERT INTO $table (";
