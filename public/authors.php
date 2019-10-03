@@ -1,10 +1,12 @@
 <?php
 
-require __DIR__ . '/../db/DatabaseConnection.php';
-require __DIR__ . '/../db/DatabaseFunctions.php';
+require_once __DIR__ . '/../db/pdoObject.php';
+require_once __DIR__ . '/../db/Database.php';
+
+$database = new Database($pdo);
 
 try {
-    $authors = getAll($pdo, 'authors');
+    $authors = $database->getAll('authors');
 } catch (\PDOException $e) {
     echo "Erro ao acessar o banco de dados: " . $e->getMessage();
 }
