@@ -1,6 +1,6 @@
 <?php
-include_once __DIR__ . '/../db/pdoObject.php';
-include_once __DIR__ . '/../db/Database.php';
+require_once __DIR__ . '/../db/pdoObject.php';
+require_once __DIR__ . '/../db/Database.php';
 
 $database = new Database($pdo);
 
