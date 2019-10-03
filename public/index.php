@@ -1,18 +1,20 @@
 <?php 
-    include __DIR__ . '/../db/DatabaseConnection.php';
-    include __DIR__ . '/../db/DatabaseFunctions.php';
+require_once __DIR__ . '/../db/pdoObject.php';
+require_once __DIR__ . '/../db/Database.php';
 
-    try {
-        $posts = getAll($pdo, 'posts');
-    } catch (PDOException $e) {
-        print("Erro no banco:" . $e->getMessage());
-    }    
+$database = new Database($pdo);
 
-    ob_start();
+try {
+    $posts = $database->getAll('posts');
+} catch (PDOException $e) {
+    print("Erro no banco:" . $e->getMessage());
+}    
 
-    include __DIR__ . '/../views/index.template.php';
+ob_start();
 
-    $output = ob_get_clean();
+include __DIR__ . '/../views/index.template.php';
 
-    include __DIR__ . '/../views/layout.template.php';
+$output = ob_get_clean();
+
+include __DIR__ . '/../views/layout.template.php';
 ?>
