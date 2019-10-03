@@ -7,7 +7,7 @@ if (isset($_GET['user'])) {
     $user = getById($pdo, 'authors', $_GET['user']);
 
     if (is_array($user)) {
-
+        $posts = getAllWhere($pdo, 'posts', ['author_id' => $_GET['user']]);
     } else {
         header('Location: /');
     }
