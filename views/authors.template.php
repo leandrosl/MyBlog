@@ -7,7 +7,7 @@
                 <div class="card">
                     <div class="card-body">
                         <a href="#!">
-                            <h4><?= $author['firstname'] .' '. $author['lastname'] ?></h4>
+                            <h4><?= "{$author['firstname']} {$author['lastname']}" ?></h4>
                         </a>
                     </div>
                 </div>
