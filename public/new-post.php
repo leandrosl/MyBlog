@@ -1,8 +1,8 @@
 <?php
+require_once __DIR__ . '/../db/pdoObject.php';
+require_once __DIR__ . '/../db/Database.php';
 
-include __DIR__ . '/../db/DatabaseConnection.php';
-include __DIR__ . '/../db/DatabaseFunctions.php';
-
+$database = new Database($pdo);
 
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     try {
@@ -12,7 +12,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             'post_text' => $_POST['post-text'],
         ];
 
-        $isInsert = insert($pdo, 'posts', $fields);
+        $isInsert = $database->insert('posts', $fields);
 
         if ($isInsert) {
             header("Location: /");
@@ -29,5 +29,4 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
     include __DIR__ . '/../views/layout.template.php';
 }
-
 ?>
