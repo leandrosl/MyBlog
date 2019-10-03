@@ -1,13 +1,14 @@
 <?php
+require_once __DIR__ . '/../db/pdoObject.php';
+require_once __DIR__ . '/../db/Database.php';
 
-include __DIR__ . '/../db/DatabaseConnection.php';
-include __DIR__ . '/../db/DatabaseFunctions.php';
+$database = new Database($pdo);
 
 if (isset($_GET['user'])) {
-    $user = getById($pdo, 'authors', $_GET['user']);
+    $user = $database->getById('authors', $_GET['user']);
 
     if (is_array($user)) {
-        $posts = getAllWhere($pdo, 'posts', ['author_id' => $_GET['user']]);
+        $posts = $database->getAllWhere('posts', ['author_id' => $_GET['user']]);
     } else {
         header('Location: /');
     }
@@ -22,5 +23,4 @@ if (isset($_GET['user'])) {
 } else {
     header('Location: /');
 }
-
 ?>
