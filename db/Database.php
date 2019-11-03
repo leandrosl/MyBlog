@@ -31,15 +31,17 @@ class Database
         $query = "SELECT * FROM {$table} WHERE ";
 
         foreach ($whereFields as $key => $value) {
-            $query .= "{$key} = {$value} AND ";
+            $query .= "{$key} = '{$value}' AND ";
         }
 
-        $query = str_replace(' AND ', ';', $query);
+        $query .= '+';
+
+        $query = str_replace(' AND +', ';', $query);
 
         $statement = $this->pdo->prepare($query);
         $statement->execute();
 
-        return $statement->fetch();
+        return $statement->fetch(PDO::FETCH_ASSOC);
     }
 
     function insert($table, $fields) 
